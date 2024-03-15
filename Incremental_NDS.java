@@ -11,14 +11,15 @@ public class Incremental_NDS {
 		Helper helper = new Helper();
 		Old_Approach oldAppr = new Old_Approach();
 		Approach_Improved apprImpr = new Approach_Improved();
+
 		
-        int populationSize = 8;
-        int noObjectives = 2;
+        	int populationSize = 8;
+        	int noObjectives = 2;
         
 		Point[] population = new Point[populationSize];
-        for(int i = 0; i < populationSize; i++) {
-            population[i] = new Point(noObjectives, populationSize);
-        }
+        	for(int i = 0; i < populationSize; i++) {
+            		population[i] = new Point(noObjectives, populationSize);
+        	}
 
 		Point p = new Point(noObjectives, populationSize);
 		p.setObjective(1, 0);	p.setObjective(2, 1);
@@ -61,38 +62,38 @@ public class Incremental_NDS {
 		population[7] = new Point(p); 
 	   
 		System.out.println("The population is...");
-        helper.Print(population);
+        	helper.Print(population);
         
-        LinkedList<LinkedList<Integer>> OldApproachsetF = new LinkedList<>(); // Used to store the set of fronts for old approach
-        LinkedList<LinkedList<Integer>> NewApproachsetF = new LinkedList<>(); // Used to store the set of fronts for proposed approach
-        
-        OldApproachsetF = helper.sort(population);  
+        	LinkedList<LinkedList<Integer>> OldApproachsetF = new LinkedList<>(); // Used to store the set of fronts for old approach
+        	LinkedList<LinkedList<Integer>> NewApproachsetF = new LinkedList<>(); // Used to store the set of fronts for proposed approach
+        	
+        	OldApproachsetF = helper.sort(population);  
 		System.out.println("The initial set of fronts is...");
-        helper.Print(OldApproachsetF);
+        	helper.Print(OldApproachsetF);
         
-        NewApproachsetF = helper.sort(population);
+        	NewApproachsetF = helper.sort(population);
 		System.out.println("The initial set of fronts is...");
-        helper.Print(NewApproachsetF);
+       	 	helper.Print(NewApproachsetF);
         
-        /* Insert offspring point in OldApproachsetF */
-        Point x = new Point(noObjectives, populationSize);
-        x.setId(populationSize);
-        x.setObjective(0.5, 0);		x.setObjective(1.5, 1);
+        	/* Insert offspring point in OldApproachsetF */
+        	Point x = new Point(noObjectives, populationSize);
+       	 	x.setId(populationSize);
+       	 	x.setObjective(0.5, 0);		x.setObjective(1.5, 1);
 
-        oldAppr.Insert(OldApproachsetF, x, population);
+        	oldAppr.Insert(OldApproachsetF, x, population);
 		System.out.println("The set of fronts after insertion using Old Approach is...");
-        helper.Print(OldApproachsetF);
+        	helper.Print(OldApproachsetF);
         
         
         
-        /* Insert offspring point in NewApproachsetF */
-        x = new Point(noObjectives, populationSize);
-        x.setId(populationSize);
-        x.setObjective(0.5, 0);		x.setObjective(1.5, 1);
+        	/* Insert offspring point in NewApproachsetF */
+        	x = new Point(noObjectives, populationSize);
+        	x.setId(populationSize);
+        	x.setObjective(0.5, 0);		x.setObjective(1.5, 1);
 
-        apprImpr.Insert(NewApproachsetF, x, population);
+        	apprImpr.Insert(NewApproachsetF, x, population);
 		System.out.println("The set of fronts after insertion using New Approach is...");
-        helper.Print(NewApproachsetF);
+        	helper.Print(NewApproachsetF);
         
 	}
 }
@@ -251,12 +252,6 @@ class Point {
         }
     } 
 }
-
-
-
-
-
-
 
 
 class Approach_Improved {
@@ -471,8 +466,6 @@ class Old_Approach {
 }
 
 
-
-
 class Helper {
     public LinkedList<LinkedList<Integer>> sort(Point population[]) {
         
@@ -551,8 +544,6 @@ class Helper {
         }
     }
     
-    
-    
     public void Print(BitSet bits) {
         boolean bit;
         for (int i = 0; i < bits.size(); i++) {
@@ -587,5 +578,3 @@ class Helper {
         return randomNum;
     }
 }
-
-
